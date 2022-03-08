@@ -1,0 +1,73 @@
+{% extends "first/index.html" %}
+
+{% block change %}
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <div class="form-group">
+        <label for="text">Syntaxeme ID</label>
+        <select id="id" name="select">
+        {%for item in choices%}
+        <option>
+            {{item}}
+        </option>
+        {%endfor%}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="text">Frame Role ID</label>
+        <input type="text" class="form-control" 
+        name="file_name" value="{{ context.doc_position }}">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" 
+        name="author" value="{{ context.text }}">
+    </div> 
+    <div class="form-group">
+        <label for="text">Document Position</label>
+        <input type="text" class="form-control" 
+        name="file_name" value="{{ context.doc_position }}">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" 
+        name="author" value="{{ context.text }}">
+    </div> 
+    
+    <input id="edit" type="submit" value="Save" name="action" class="btn btn-light">
+    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+</form>
+
+<script>
+     $("#").click(
+        function () {
+             // Get value
+            file_name = $("#file_name").val();
+            author = $("#author").val();
+            language_id = $("#language_id").val();
+          
+            send_data = {
+                "file_name":file_name,
+                "author":author,
+                "language_id":language_id,
+                //"csrfmiddlewaretoken":"{{ csrf_token }}",
+            };
+            console.log(send_data)
+            url = "{{url}}";
+            $.ajax(
+                {
+                    url:"{{url}}",
+                    type:"post",
+                    
+                }
+            )
+ 
+        }
+    )
+</script>
+{% endblock change %}

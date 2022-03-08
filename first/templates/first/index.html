@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+
+
+
+<body>
+
+
+
+<div id="snek">
+<div id="snax">
+<div class="container title-logo hidden-xs">
+    <a href="http://modmorph.turklang.net/ru/">Портал "Тюркская Морфема"</a>
+</div>
+<nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+
+           
+            <button type="button" class="navbar-toggle" id="navbarButton" data-toggle="collapse" data-target="#navbarLinks" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+            <p class="navbar-text navbar-signed-in" style="margin-left: 20px;">
+                <b>
+                    Django
+                </b>
+            </p>
+
+
+        </div>
+        <div class="collapse navbar-collapse" id="navbarLinks">
+            <ul class="nav navbar-nav navbar-right">
+            
+                <li class="dropdown">
+                    <a href="../home" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-user hidden-xs hidden-md hidden-lg"> </span>
+                        <span class="hidden-sm">Приложения</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/home">Первое приложение</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- SideBarMenuBlock -->
+<div class="col-md-3 col-sm-4 sidebar-menu" id="sidebarMenuBlock">
+       
+        <div class="list-group-item">
+            <b>Меню</b>
+        </div>
+
+            <a class="list-group-item" role="button" data-toggle="collapse" href="#collapseFirstApp">
+                Первое приложение
+                <span class="glyphicon glyphicon-chevron-down pull-right" style="line-height: 1.846;"></span>
+            </a>
+            <div class="collapse" id="collapseFirstApp">
+            <a href="/apps/first/clauses" class="list-group-item">
+                Клаузы
+            </a>
+            <a href="/apps/first/documents" class="list-group-item">
+                Документы
+            </a>
+            <a href="/apps/first/sentences" class="list-group-item">
+                Предложения
+            </a>
+            <a href="/apps/first/syntaxemes" class="list-group-item">
+                Синтаксемы
+            </a>
+            <a href="/apps/first/wordforms" class="list-group-item">
+                Словоформы
+            </a>
+            </div>
+</div>
+
+
+
+<div class="col-md-9 col-sm-8 col-xs-12">
+
+    
+    {% block clauses %}
+    {% endblock clauses %}
+
+
+    {% block documents %}
+    {% endblock documents %}
+
+
+    {% block sentences %}
+    {% endblock sentences %}
+
+
+    {% block syntaxemes %}
+    {% endblock syntaxemes %}
+
+
+    {% block wordforms %}
+    {% endblock wordforms %}
+
+    {% block change %}
+    {% endblock change %}
+    
+    {% block add %}
+    {% endblock add %}
+    
+    {% block table_view %}
+    {% endblock table_view %}
+    
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+
+</body></html>

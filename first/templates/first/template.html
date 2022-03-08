@@ -1,0 +1,51 @@
+{% extends "first/index.html" %}
+
+{% block add %}
+
+<form action="" method="post">
+    {% csrf_token %}
+        <h1>
+        {{ context }}
+        </h1>
+
+        Имя: <input id = "username" type = "text" name = "username"> <br>
+        Пароль: <input id = "password" type = "пароль" name = "password"> <br>
+        <input id = "check_value" type = "button" value = "Submit">
+
+</form>
+<script>
+   $("#check_value").click(
+       function () {
+            // Get value
+           username = $("#username").val();
+           password = $("#password").val();
+           //url = "/ajax_post_data/?username="+username+"&password=" + password;
+                        // Построить словарь данных
+           send_data = {
+               "username":username,
+               "password":password,
+               "csrfmiddlewaretoken":"{{ csrf_token }}",
+           };
+           console.log(send_data)
+           url = "{{context}}";
+           $.ajax(
+               {
+                   url:url,
+                   type:"post",
+                   data:send_data,
+                   success:function (data) {
+                       console.log(data);
+                   },
+                   error:function (error) {
+                       console.log(error);
+                   }
+               }
+           )
+
+       }
+   )
+
+
+</script>
+
+{% endblock add %}

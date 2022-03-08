@@ -1,0 +1,39 @@
+{% extends "first/index.html" %}
+
+{% block documents %}
+
+<h2 style="font-family: Monospace;">Документы </h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>File Name</th>
+      <th>Author</th>
+      <th>Language ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in context %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        {% for key, value in item.items %}
+        <!-- {% if "PK" not in key %} -->
+          <th>
+            <a href="documents/{{ item.PK }}">{{ value }}</a>
+          </th>
+        <!-- {% endif %} -->
+       
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+
+  <a class="btn btn-primary" href="documents/add">Add Document</a>
+
+
+{% endblock documents %}

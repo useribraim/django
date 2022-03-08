@@ -1,0 +1,23 @@
+{% extends "first/index.html" %}
+
+{% block change %}
+
+<!-- <form>
+    <input type="text" name="title" placeholder="Your title"/>
+    <input type="submit" value="save"/>
+</form> -->
+<form method="get">
+    <!-- {% csrf_token %} -->
+    {% for key, value in context.items %}
+    <div class="form-group">
+        <label for="text">{{ key }}</label>
+        <input type="text" class="form-control" 
+        name="search" value="{{ value }}">
+    </div>
+    {% endfor %}
+    <input type="submit" value="Save" name="save" class="btn btn-light">
+    <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+    
+</form>
+
+{% endblock change %}

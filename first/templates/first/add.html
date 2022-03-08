@@ -1,0 +1,179 @@
+{% extends "first/index.html" %}
+
+{% block change %}
+
+
+<!-- <form>
+    <input type="text" name="title" placeholder="Your title"/>
+    <input type="submit" value="save"/>
+</form> -->
+<form method="get">
+    <!-- {% csrf_token %} -->
+    {% if context == 'documents' %}
+    
+<!--     
+    <div class="form-group">
+        <label for="text">Type</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div>  -->
+        
+    <div class="form-group">
+        <label for="text">File Name</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Author</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Language ID</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div> 
+    <input type="submit" value="Save" name="save" class="btn btn-light">
+    <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+    {% endif %}
+<form method="get">
+    {% if context == 'sentences' %}
+    <div class="form-group">
+        <label for="type">ID:</label>
+        <select id="type" name="add">
+        {% for item in choice %}
+            <option>{{ item }}</option>
+        {% endfor %}
+        </select> 
+    </div>
+    <div class="form-group">
+        <label for="text">Doc Position</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Document ID</label>
+        <input type="text" class="form-control" 
+        name="add" value="">
+    </div>
+
+    <input type="submit" value="Save" name="save" class="btn btn-light">
+    <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+    {% endif %}
+</form>
+
+<form method="get">
+{% if context == 'clauses' %}
+    <div class="form-group">
+        <label for="type">ID:</label>
+        <select id="type" name="add">
+        {% for item in choice %}
+            <option>{{ item }}</option>
+        {% endfor %}
+        </select> 
+    </div>
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" 
+        name="add" value="" autocomplete="off">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Sentence ID</label>
+        <input type="text" class="form-control" 
+        name="add" value="" autocomplete="off">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Frame ID</label>
+        <input type="text" class="form-control" 
+        name="add" value="" autocomplete="off">
+    </div>
+
+    <input type="submit" value="Save" name="save" class="btn btn-light">
+    <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+    {% endif %}
+</form>
+
+<form method="get">
+    {% if context == 'syntaxemes' %}
+        <div class="form-group">
+            <label for="type">ID:</label>
+            <select id="type" name="add">
+            {% for item in choice %}
+                <option>{{ item }}</option>
+            {% endfor %}
+            </select> 
+        </div>
+        <div class="form-group">
+            <label for="text">Clause ID</label>
+            <input type="text" class="form-control" 
+            name="add" value="">
+        </div> 
+    
+        <input type="submit" value="Save" name="save" class="btn btn-light">
+        <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+        {% endif %}
+    </form>
+
+    <form method="get">
+        {% if context == 'wordforms' %}
+            <div class="form-group">
+                <label for="type">ID:</label>
+                <select id="type" name="add">
+                {% for item in choice %}
+                    <option>{{ item }}</option>
+                {% endfor %}
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for="text">Syntaxeme ID</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div>
+            <div class="form-group">
+                <label for="text">Frame role ID</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div> 
+            <div class="form-group">
+                <label for="text">Position in document</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div> 
+            <div class="form-group">
+                <label for="text">Position in sentence</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div> 
+            <div class="form-group">
+                <label for="text">Clause position</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div>
+
+            <div class="form-group">
+                <label for="text">Root morpheme ID</label>
+                <input type="text" class="form-control" 
+                name="add" value="">
+            </div>
+        
+            <input type="submit" value="Save" name="save" class="btn btn-light">
+            <input type="submit" value="Delete" name="delete" class="btn btn-danger">
+            {% endif %}
+        </form>
+{% endblock change %}

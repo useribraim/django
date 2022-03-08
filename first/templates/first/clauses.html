@@ -1,0 +1,34 @@
+{% extends "first/index.html" %}
+
+{% block clauses %}
+<h2 style="font-family: Monospace;">Клаузы</h2>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Text</th>
+        <th>Sentence ID</th>
+        <th>Frame ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in context %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          {% for key, value in item.items %}
+          <!-- {% if "PK" not in key %} -->
+            <th>
+              <a href="clauses/{{ item.PK }}">{{ value }}</a>
+            </th>
+          <!-- {% endif %} -->
+         
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="clauses/add">Add Sentence</a>
+
+{% endblock clauses %}

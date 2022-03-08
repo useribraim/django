@@ -1,0 +1,66 @@
+{% extends "first/index.html" %}
+
+{% block add %}
+
+
+
+<script>
+    $("#check_value").click(
+        function () {
+             // Get value
+            file_name = $("#file_name").val();
+            author = $("#author").val();
+            language_id = $("#language_id").val();
+          
+            send_data = {
+                "file_name":file_name,
+                "author":author,
+                "language_id":language_id,
+                //"csrfmiddlewaretoken":"{{ csrf_token }}",
+            };
+            console.log(send_data)
+            url = "{{context}}";
+            $.ajax(
+                {
+                    url:url,
+                    type:"post",
+                    data:send_data,
+                    success:function (data) {
+                        console.log(data);
+                    },
+                    error:function (error) {
+                        console.log(error);
+                    }
+                }
+            )
+ 
+        }
+    )
+ 
+ 
+ </script>
+
+        <form method="POST">
+            {% csrf_token %}
+                
+            <div class="form-group">
+                <label for="text">File Name</label>
+                <input type="text" class="form-control" 
+                name="file_name" value="">
+            </div> 
+            
+            <div class="form-group">
+                <label for="text">Author</label>
+                <input type="text" class="form-control" 
+                name="author" value="">
+            </div> 
+            
+            <div class="form-group">
+                <label for="text">Language ID</label>
+                <input type="text" class="form-control" 
+                name="language_id" value="">
+            </div> 
+            <input  type="submit" value="Save" name="action" class="btn btn-light">
+            </form>
+
+{% endblock add %}
