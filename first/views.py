@@ -23,7 +23,7 @@ class DocumentView(View):
             'language_ID': i.language_ID
             }
             lst.append(current)
-        return render(request, 'first/documents_list.html', {'context': lst, 'url': url})
+        return render(request, 'first/documents/documents_list.html', {'context': lst, 'url': url})
 
     def document_view(request, detail_view_id = 0):
         print(request.POST)
@@ -42,10 +42,11 @@ class DocumentView(View):
         elif request.POST.get('action') == 'Edit':
             return redirect(url + '/change')
 
-        return render(request, 'first/document_view_ajax.html', {'context': current, 'url': url})
+        return render(request, 'first/documents/document_view_ajax.html', {'context': current, 'url': url})
 
     def document_add(request):
         url = '/apps/first/documents/add'
+        
         if request.POST.get('action') == 'Save':
             doc = Document(
                 file_name = request.POST.get('file_name'),
@@ -54,7 +55,7 @@ class DocumentView(View):
                 )
             doc.save()
             return redirect('/apps/first/documents')
-        return render(request, 'first/document_add_ajax.html', {'context': url})
+        return render(request, 'first/documents/document_add_ajax.html', {'context': url})
 
     def document_change(request, detail_view_id):
         url = '/apps/first/documents/' + str(detail_view_id)
@@ -78,7 +79,7 @@ class DocumentView(View):
             'author': doc.author,
             'language_id': doc.language_ID,
             }
-        return render(request, 'first/document_change_ajax.html', {'context': current, 'text': url})
+        return render(request, 'first/documents/document_change_ajax.html', {'context': current, 'text': url})
 
 
 class SentenceView(View):
@@ -94,7 +95,7 @@ class SentenceView(View):
             #'document_ID': i.document_ID
             }
             lst.append(current)
-        return render(request, 'first/sentences_list.html', {'context': lst})
+        return render(request, 'first/sentences/sentences_list.html', {'context': lst})
 
     def sentence_view(request, detail_view_id):
         url = '/apps/first/sentences/' + str(detail_view_id)
@@ -121,7 +122,7 @@ class SentenceView(View):
             return redirect('/apps/first/sentences')
         elif request.POST.get('action') == 'Edit':
             return redirect(url + '/change')
-        return render(request, 'first/sentence_view_ajax.html', {'context': current, 'choices': arr, 'url': url})
+        return render(request, 'first/sentences/sentence_view_ajax.html', {'context': current, 'choices': arr, 'url': url})
 
     def sentence_add(request):
         url = "/apps/first/sentences"
@@ -152,7 +153,7 @@ class SentenceView(View):
                 )
                 sentence.save()
                 return redirect(url)
-        return render(request, 'first/sentence_add_ajax.html', {'context': url, 'choices': arr})
+        return render(request, 'first/sentences/sentence_add_ajax.html', {'context': url, 'choices': arr})
     
     def sentence_change(request, detail_view_id):
         url = '/apps/first/documents/' + str(detail_view_id)
@@ -196,7 +197,7 @@ class SentenceView(View):
         'document_id': obj.document_ID
         }
 
-        return render(request, 'first/sentence_change_ajax.html', {'context': current, 'choices': arr})
+        return render(request, 'first/sentences/sentence_change_ajax.html', {'context': current, 'choices': arr})
 
 
 class ClauseView(View):
@@ -212,7 +213,7 @@ class ClauseView(View):
             'Frame_ID': i.frame_ID
             }
             lst.append(current)
-        return render(request, 'first/clauses.html', {'context': lst})
+        return render(request, 'first/clauses/clauses.html', {'context': lst})
 
     def clause_add(request):
         url = "/apps/first/clauses"
@@ -587,13 +588,23 @@ class WordformView(View):
             return redirect(url + '/change')
         return render(request, 'first/wordforms/wordform_view_ajax.html', {'context': current, 'choices': arr, 'url': url})
 
+def foo(request):
+    print(request.POST)
+    return render(request, 'first/ajax.html')
+    # request.is_ajax() is deprecated since django 3.1
+    # is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
-
+    # if is_ajax:
+    #     if request.method == 'POST':
+    #         data = json.load(request)
+    #         todo = data.get('payload')
+    #         Todo.objects.create(task=todo['task'], completed=todo['completed'])
+    #         return JsonResponse({'status': 'Todo added!'})
+    #     return JsonResponse({'status': 'Invalid request'}, status=400)
+    # else:
+    #     return render(request, 'first/ajax.html')
 
     
-
-
-
 
 
 def handle_uploaded_file(f):  

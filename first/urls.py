@@ -5,8 +5,11 @@ from first.views import DocumentView, SentenceView, ClauseView, SyntaxemeView, W
 
 
 
-urlpatterns = [    
+urlpatterns = [
+    path('foo', views.foo),
+
     path('apps/first/documents/upload', views.index),
+
 
     path('apps/first/documents', DocumentView.document_list),
     path('apps/first/documents/add', DocumentView.document_add),
