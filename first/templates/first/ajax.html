@@ -1,17 +1,149 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            margin: 1em 15em 2em;
+            background: #f3f3f3;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
     
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <div class="form-group">
+        <input class="form-control" id="name" type="text" placeholder="Name">
+      </div>
+      <div class="form-group">
+        <input class="form-control" id="surname" type="text" placeholder="Surname">
+    </div>
+    <button id="b1" type="submit" class="btn btn-dark">Submit</button>
 
-<button id="btn1">jQuery</button>
-<button id="btn2" onclick="alert('Мир JavaScript'); ">JavaScript</button>
+    
+    <script>
+        $("#b1").on("click", function () {
+            $.ajax({
+            url:"/foo",
+            type:"POST",
+            data:{
+            "name":$("#name").val(),
+            "surname":$("#surname").val(),
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            })
+        })
 
-<script type="text/javascript">
-    $(function(){
-        $("#btn1").click(function(){ 
-            $(this).css('background-color', 'blue');
-            alert('Мир jQuery');
-        });
-    });
     </script>
+    
+</body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="container mt-5 w-50">
+            {% csrf_token %}
+            <label for="name">Last name:</label><br>
+            <input type="text" id="name" name="name">
+            <input id="b1" type="button" value="Submit" />
+    </div> -->
+
+    <!-- {% csrf_token %}
+    <input type="text" id="i1">+
+    <input type="text" id="i2">=
+    <input type="text" id="i3">
+    <input type = "button" value = "Action" id = "b1"> -->
+<!-- 
+    text
+
+    <script>
+       
+        $("#b1").on("click", function () {
+            $.ajax({
+            url:"/foo",
+            type:"GET",
+            data:{"i1":$("#i1").val(),"i2":$("#i2").val()},
+            success:function (data) {
+                $("#i3").val(data);
+            }
+            })
+        })
+
+    </script>
+ -->
+
+
+
+
+
+<!-- <script>
+  $(".send").on("click", function(){
+      $.ajax({
+          url: '/foo',
+          type: "GET",
+          data: "Hello",
+          success: function(resp){
+              $(".content-data").html(resp);
+          },
+          error: function(resp){
+              console.log("something went wrong");
+          }
+      });
+  });
+</script> -->
+
+<!-- <form method="POST">
+    {% csrf_token %}
+        
+    <div class="form-group">
+        <label for="text">Document Position</label>
+        <input type="text" class="form-control" 
+        name="file_name" value="{{ context.doc_position }}">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input type="text" class="form-control" 
+        name="author" value="{{ context.text }}">
+    </div> 
+    
+
+    <input id="edit" type="submit" value="Save" name="action" class="btn btn-light">
+    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+</form> -->

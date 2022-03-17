@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.views import View
 import json
-from .forms import StudentForm
+from .forms import StudentForm, ContactForm
 
 
 
@@ -588,9 +588,23 @@ class WordformView(View):
             return redirect(url + '/change')
         return render(request, 'first/wordforms/wordform_view_ajax.html', {'context': current, 'choices': arr, 'url': url})
 
+
 def foo(request):
-    print(request.POST)
+    if request.method == "POST":
+        print("DOne")
+        return redirect('/apps/first/documents/upload')
+    return redirect('/apps/first/documents/upload')
     return render(request, 'first/ajax.html')
+    # if request.method == "POST":
+    #     form = ContactForm(request.POST)
+    #     if form.is_valid():
+    #         name = form.cleaned_data['name']
+    #         form.save()
+    #         return JsonResponse({"name": name}, status=200)
+    #     else:
+    #         errors = form.errors.as_json()
+    #         return JsonResponse({"errors": errors}, status=400)
+    
     # request.is_ajax() is deprecated since django 3.1
     # is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
@@ -620,5 +634,5 @@ def index(request):
             return HttpResponse("File uploaded successfuly")  
     else:  
         student = StudentForm()  
-        return render(request,"first/upload.html",{'form':student})  
+        return render(request,"first/other/upload.html",{'form':student})  
 

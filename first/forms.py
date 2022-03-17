@@ -13,3 +13,8 @@ class StudentForm(forms.Form):
     email     = forms.EmailField(label="Enter Email")  
     file      = forms.FileField() 
 
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(max_length = 10)  
+

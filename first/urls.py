@@ -6,7 +6,7 @@ from first.views import DocumentView, SentenceView, ClauseView, SyntaxemeView, W
 
 
 urlpatterns = [
-    path('foo', views.foo),
+    path('foo', views.foo, name='contact_form'),
 
     path('apps/first/documents/upload', views.index),
 
