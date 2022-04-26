@@ -8,9 +8,8 @@ from .models import Document, Sentence, Clause
 
 
 class StudentForm(forms.Form):
-    firstname = forms.CharField(label="First name",max_length=50)  
-    lastname  = forms.CharField(label="Last name", max_length = 10)  
-    email     = forms.EmailField(label="Enter Email")  
+    name = forms.CharField(max_length=100)
+    author = forms.CharField(max_length=100)
     file      = forms.FileField() 
 
 class ContactForm(forms.Form):

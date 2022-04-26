@@ -6,15 +6,17 @@ from first.views import DocumentView, SentenceView, ClauseView, SyntaxemeView, W
 
 
 urlpatterns = [
+    path('try', views.document_upload, name='try'),
+
     path('foo', views.foo, name='contact_form'),
 
-    path('apps/first/documents/upload', views.index),
+    path('apps/first/documents/upload', views.upload),
 
 
-    path('apps/first/documents', DocumentView.document_list),
-    path('apps/first/documents/add', DocumentView.document_add),
-    path('apps/first/documents/<int:detail_view_id>', DocumentView.document_view),
-    path('apps/first/documents/<int:detail_view_id>/change', DocumentView.document_change),
+    path('apps/first/documents', DocumentView.document_list, name="document_list"),
+    path('apps/first/documents/add', DocumentView.document_add, name="document_add"),
+    path('apps/first/documents/<int:detail_view_id>', DocumentView.document_view, name="document_view"),
+    path('apps/first/documents/<int:detail_view_id>/change', DocumentView.document_change, name="document_change"),
 
 
     path('apps/first/sentences', SentenceView.sentence_list),
@@ -42,7 +44,6 @@ urlpatterns = [
     #path('apps/first/sentences/<int:detail_view_id>/change', SentenceView.sentence_change),
     #path('home/apps/first/<slug:slug>/add', views.add),
     #path('home/apps/first/<slug:slug>/<int:detail_view_id>', views.detail_view, name = 'detail_view'),
-    
     
 
     

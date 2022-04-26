@@ -3,11 +3,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.views import View
-import json
 from .forms import StudentForm, ContactForm
-
-
-
+import docx
+import nltk
 
 
 class DocumentView(View):
@@ -26,7 +24,6 @@ class DocumentView(View):
         return render(request, 'first/documents/documents_list.html', {'context': lst, 'url': url})
 
     def document_view(request, detail_view_id = 0):
-        print(request.POST)
         url = '/apps/first/documents/' + str(detail_view_id)
         doc = Document.objects.get(pk=detail_view_id)
         current = {
@@ -37,7 +34,6 @@ class DocumentView(View):
             }
         if request.POST.get('action') == 'Delete':
             doc.delete()
-            print("its working")
             return redirect('/apps/first/documents')
         elif request.POST.get('action') == 'Edit':
             return redirect(url + '/change')
@@ -100,6 +96,18 @@ class SentenceView(View):
     def sentence_view(request, detail_view_id):
         url = '/apps/first/sentences/' + str(detail_view_id)
         sentence = Sentence.objects.get(pk=detail_view_id)
+        all_document_obj = Document.objects.all()
+
+        for doc in all_document_obj:
+            if doc.file_name == str(sentence.ID):
+                print("DONE")
+                doc_data = {
+                'type': 'Документ',
+                'file_name': doc.file_name,
+                'author': doc.author,
+                'language_id': doc.language_ID,
+                }
+
         ##############################
         choice = Document.objects.all()
         arr = []
@@ -122,7 +130,8 @@ class SentenceView(View):
             return redirect('/apps/first/sentences')
         elif request.POST.get('action') == 'Edit':
             return redirect(url + '/change')
-        return render(request, 'first/sentences/sentence_view_ajax.html', {'context': current, 'choices': arr, 'url': url})
+        return render(request, 'first/sentences/sentence_view_ajax.html', {'context': current, 'choices': arr, 'url': url, 'doc_data': doc_data})
+        #, 'doc_data': doc_data
 
     def sentence_add(request):
         url = "/apps/first/sentences"
@@ -590,10 +599,11 @@ class WordformView(View):
 
 
 def foo(request):
-    if request.method == "POST":
-        print("DOne")
-        return redirect('/apps/first/documents/upload')
-    return redirect('/apps/first/documents/upload')
+    print(request)
+    # if request.method == "POST":
+    #     print("DOne")
+    #     return redirect('/apps/first/documents/upload')
+    # return redirect('/apps/first/documents/upload')
     return render(request, 'first/ajax.html')
     # if request.method == "POST":
     #     form = ContactForm(request.POST)
@@ -621,18 +631,53 @@ def foo(request):
     
 
 
-def handle_uploaded_file(f):  
+def handle_uploaded_file(f, request):  
     with open('first/files/'+f.name, 'wb+') as destination:  
         for chunk in f.chunks():  
-            destination.write(chunk)  
+            destination.write(chunk) 
+        file = Document(file_name = f.name, author = request.POST['author'], language_ID = 'rus')
+        file.save()
+        doc = docx.Document(f"first/files/{f.name}")
+        all_paras = doc.paragraphs
+        sentences = []
 
-def index(request):  
-    if request.method == 'POST':  
+        for par in all_paras:
+            token = nltk.sent_tokenize(par.text)
+            print(type(token))
+            if token != " ":
+                for item in token:
+                    string = "".join(item)
+                    string = string.replace(u'\xa0', u' ')
+                    sentences.append(string)
+            
+        
+        print(sentences)
+        for item in sentences:
+            if item != ",":
+                s = Sentence(ID = file, doc_position = "example", text = item, document_ID = 1)
+                s.save()
+
+
+
+def upload(request):  
+    if request.method == 'POST': 
+        print(request.POST)
         student = StudentForm(request.POST, request.FILES)  
         if student.is_valid():  
-            handle_uploaded_file(request.FILES['file'])  
-            return HttpResponse("File uploaded successfuly")  
+            handle_uploaded_file(request.FILES['file'], request)  
+            return redirect('/apps/first/documents') 
     else:  
         student = StudentForm()  
         return render(request,"first/other/upload.html",{'form':student})  
+    
+def document_upload(request):
+    doc = docx.Document("first/files/try.docx")
+    all_paras = doc.paragraphs
+    print(all_paras[5].text)
+    return HttpResponse("Done!")
+    # with open('files/Горький.doc', 'rb') as f:
+    #     source_stream = StringIO(f.read())
+    # document = Document(source_stream)
+    # # print(source_stream)
+    # source_stream.close()
 

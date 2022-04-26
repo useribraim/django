@@ -1,6 +1,6 @@
 {% extends "first/index.html" %}
 
-{% block add %}
+{% block content %}
 
 
 
@@ -11,7 +11,7 @@
     {% csrf_token %}
     <table class="table table-bordered">
         <tr id="text">
-            <th style="width: 30%">Название</th>
+            <th style="width: 30%"><h3>Предложение</h3></th>
             <td></td>
         <tr>
             <th>Text</th>
@@ -27,16 +27,33 @@
         </tr>
         </tr>
         
-    </table>
+    </table class="table table-bordered">
+        
+    
     <input id="edit" type="submit" value="Edit" name="action" class="btn btn-light">
     <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
     
     </form>
     
+    <table class="table table-bordered" style="margin-top: 40px;">
 
-
-
-
+        <tr id="text">
+            <th style="width: 30%"><h3>Документ</h3></th>
+            <td></td>
+        <tr>
+            <tr>
+                <th>File name</th>
+                <td>{{doc_data.file_name}}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{doc_data.author}}</td>
+            </tr>
+            <tr>
+                <th>Language ID</th>
+                <td>{{doc_data.language_id}}</td>
+            </tr>
+    </table>
     
 
             
@@ -66,19 +83,4 @@ $("#text").change(function () {
 </script>
 
 
-<!-- <script>
-    const Url = 'http://localhost:8000/apps/first/sentences/15';
-    const data ={
-        name: 'Tom',
-        id:23
-    }
-    $('.btn').click(function(){
-        $.post(Url,data, function(data, status){
-            console.log('${data} and status is ${status}')
-        });
-
-    })
-</script>
-<script> -->
-       
-{% endblock add %}
+{% endblock content %}
