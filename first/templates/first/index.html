@@ -9,11 +9,15 @@
     <title>Проект</title>
 
     <link rel="stylesheet" href='{% static "bootstrap3/css/bootstrap.css" %}'>
+    <script
+			  src="https://code.jquery.com/jquery-3.6.0.js"
+			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+			  crossorigin="anonymous"></script>
     <script src='{% static "bootstrap3/js/bootstrap.js" %}'></script>
     <script src='{% static "bootstrap3/js/jquery-3.6.0.min.js" %}'></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" 
     integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-
+    <script src='{% static "bootstrap3/js/sentence_choice.js" %}'></script>
 </head>
 
 
@@ -67,17 +71,17 @@
 
 
 <!-- SideBarMenuBlock -->
-<div class="col-md-3 col-sm-4 sidebar-menu" id="sidebarMenuBlock">
+<div class="col-md-2 col-sm-4 sidebar-menu" id="sidebarMenuBlock">
        
         <div class="list-group-item">
             <b>Меню</b>
         </div>
 
-            <a class="list-group-item" role="button" data-toggle="collapse" href="#collapseFirstApp">
+            <!-- <a class="list-group-item" role="button" data-toggle="collapse" href="#collapseFirstApp">
                 Первое приложение
                 <span class="glyphicon glyphicon-chevron-down pull-right" style="line-height: 1.846;"></span>
-            </a>
-            <div class="collapse" id="collapseFirstApp">
+            </a> -->
+            
             <a href="/apps/first/clauses" class="list-group-item">
                 Клаузы
             </a>
@@ -93,7 +97,7 @@
             <a href="/apps/first/wordforms" class="list-group-item">
                 Словоформы
             </a>
-            </div>
+            
 </div>
 
 
@@ -104,7 +108,7 @@
     {% endblock content %}
     
 </div>
-
+<script src='{% static "bootstrap3/js/sentence_choice.js" %}'></script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->

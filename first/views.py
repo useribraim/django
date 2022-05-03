@@ -94,13 +94,23 @@ class SentenceView(View):
         return render(request, 'first/sentences/sentences_list.html', {'context': lst})
 
     def sentence_view(request, detail_view_id):
-        url = '/apps/first/sentences/' + str(detail_view_id)
         sentence = Sentence.objects.get(pk=detail_view_id)
-        all_document_obj = Document.objects.all()
+        current = {
+            'Type': 'Предложение',
+            'ID': sentence.ID,
+            'document_position': sentence.doc_position,
+            'text': sentence.text,
+            }
 
-        for doc in all_document_obj:
+        #Sentence Choice Dictionary
+        sen_dict = {}
+        for s in Sentence.objects.all():
+            sen_dict[s] = s.pk
+
+        url = '/apps/first/sentences/' + str(detail_view_id)
+            
+        for doc in Document.objects.all():
             if doc.file_name == str(sentence.ID):
-                print("DONE")
                 doc_data = {
                 'type': 'Документ',
                 'file_name': doc.file_name,
@@ -118,19 +128,13 @@ class SentenceView(View):
             }
             arr.append(var)
         ###########################
-        current = {
-            'Type': 'Предложение',
-            'ID': sentence.ID,
-            'document_position': sentence.doc_position,
-            'text': sentence.text,
-            #Document ID ??
-            }
+        
         if request.POST.get('action') == 'Delete':
             sentence.delete()
             return redirect('/apps/first/sentences')
         elif request.POST.get('action') == 'Edit':
             return redirect(url + '/change')
-        return render(request, 'first/sentences/sentence_view_ajax.html', {'context': current, 'choices': arr, 'url': url, 'doc_data': doc_data})
+        return render(request, 'first/sentences/sentence_view_ajax.html', {'context': current, 'sentence_list': sen_dict, 'url': url, 'doc_data': doc_data})
         #, 'doc_data': doc_data
 
     def sentence_add(request):
@@ -599,12 +603,12 @@ class WordformView(View):
 
 
 def foo(request):
-    print(request)
+    print(request.POST)
     # if request.method == "POST":
     #     print("DOne")
     #     return redirect('/apps/first/documents/upload')
     # return redirect('/apps/first/documents/upload')
-    return render(request, 'first/ajax.html')
+    return render(request, 'first/other/example/example.html')
     # if request.method == "POST":
     #     form = ContactForm(request.POST)
     #     if form.is_valid():

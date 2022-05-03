@@ -1,12 +1,21 @@
 {% extends "first/index.html" %}
 
 {% block content %}
+  
+
+<form id="formGrammemeSelect">
+<div class="form-group">
+    <label for="Selects" class="sr-only">Граммема</label>
+    <select class="form-control input-lg" id="Select">
+
+            {% for key, value in sentence_list.items %}
+                    <option value="{{value}}">{{key}}</option>
+            {% endfor %}        
+    </select>
+</div>
+</form>
 
 
-
-    
-    
-    
     <form method="POST">
     {% csrf_token %}
     <table class="table table-bordered">
@@ -54,33 +63,9 @@
                 <td>{{doc_data.language_id}}</td>
             </tr>
     </table>
-    
 
             
-<script>
-$("#text").change(function () {
-        var username = "OKay";
-        //var username = $(this).val();
-        $.ajaxSetup({
-            headers: {
-                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
-            }
-        });
-        $.ajax({
-        url: '{{url}}',
-        method: 'POST',
-        data: {
-          'username': username
-        },
-        dataType: 'json',
-        success: function (data) {
-          if (data.taken) {
-            alert("Username taken");
-          }
-        }
-      });
-    });
-</script>
+
 
 
 {% endblock content %}
