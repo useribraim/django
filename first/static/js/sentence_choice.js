@@ -7,6 +7,6 @@
         var id = e.target.value;
         location.href = id;
 
-        ("#Select option[value=id]").attr("selected","selected");
+        // ("#Select option[value=id]").attr("selected","selected");
     });
 })();

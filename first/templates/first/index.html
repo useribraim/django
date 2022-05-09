@@ -8,16 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Проект</title>
 
-    <link rel="stylesheet" href='{% static "bootstrap3/css/bootstrap.css" %}'>
-    <script
-			  src="https://code.jquery.com/jquery-3.6.0.js"
-			  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-			  crossorigin="anonymous"></script>
-    <script src='{% static "bootstrap3/js/bootstrap.js" %}'></script>
-    <script src='{% static "bootstrap3/js/jquery-3.6.0.min.js" %}'></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" 
-    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-    <script src='{% static "bootstrap3/js/sentence_choice.js" %}'></script>
+    <link rel="stylesheet" href='{% static "css/bootstrap.css" %}'>
+    <script src='{% static "js/jquery-3.6.0.min.js"%}'></script>
 </head>
 
 
@@ -77,24 +69,20 @@
             <b>Меню</b>
         </div>
 
-            <!-- <a class="list-group-item" role="button" data-toggle="collapse" href="#collapseFirstApp">
-                Первое приложение
-                <span class="glyphicon glyphicon-chevron-down pull-right" style="line-height: 1.846;"></span>
-            </a> -->
             
-            <a href="/apps/first/clauses" class="list-group-item">
-                Клаузы
-            </a>
-            <a href="/apps/first/documents" class="list-group-item">
+            <a href="/documents" class="list-group-item">
                 Документы
             </a>
-            <a href="/apps/first/sentences" class="list-group-item">
+            <a href="/sentences" class="list-group-item">
                 Предложения
             </a>
-            <a href="/apps/first/syntaxemes" class="list-group-item">
+            <a href="/clauses" class="list-group-item">
+                Клаузы
+            </a>
+            <a href="/syntaxemes" class="list-group-item">
                 Синтаксемы
             </a>
-            <a href="/apps/first/wordforms" class="list-group-item">
+            <a href="/wordforms" class="list-group-item">
                 Словоформы
             </a>
             
@@ -108,10 +96,7 @@
     {% endblock content %}
     
 </div>
-<script src='{% static "bootstrap3/js/sentence_choice.js" %}'></script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
+<script src='{% static "js/sentence_choice.js" %}'></script>
 
+<script src='{% static "js/bootstrap.js" %}'></script>
 </body></html>

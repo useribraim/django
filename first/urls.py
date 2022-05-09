@@ -1,53 +1,39 @@
 from django.contrib import admin
 from django.urls import path, re_path
 from first import views
-from first.views import DocumentView, SentenceView, ClauseView, SyntaxemeView, WordformView
+from .views import *
 
 
 
 urlpatterns = [
-    path('try', views.document_upload, name='try'),
+    path('example', example.foo),
 
-    path('foo', views.foo, name='contact_form'),
+    path('documents/upload', views.upload, name="file_upload"),
 
-    path('apps/first/documents/upload', views.upload),
+    path('documents', documents.document_list, name="document_list"),
+    path('documents/add', documents.document_add, name="document_add"),
+    path('documents/<int:detail_view_id>', documents.document_view, name="document_view"),
+    path('documents/<int:detail_view_id>/change', documents.document_change, name="document_change"),
 
+    path('sentences', sentences.sentence_list),
+    path('sentences/add', sentences.sentence_add),
+    path('sentences/<int:detail_view_id>', sentences.sentence_view),
+    path('sentences/<int:detail_view_id>/change', sentences.sentence_change),
 
-    path('apps/first/documents', DocumentView.document_list, name="document_list"),
-    path('apps/first/documents/add', DocumentView.document_add, name="document_add"),
-    path('apps/first/documents/<int:detail_view_id>', DocumentView.document_view, name="document_view"),
-    path('apps/first/documents/<int:detail_view_id>/change', DocumentView.document_change, name="document_change"),
-
-
-    path('apps/first/sentences', SentenceView.sentence_list),
-    path('apps/first/sentences/add', SentenceView.sentence_add),
-    path('apps/first/sentences/<int:detail_view_id>', SentenceView.sentence_view),
-    path('apps/first/sentences/<int:detail_view_id>/change', SentenceView.sentence_change),
-
-
-    path('apps/first/clauses', ClauseView.clause_list),
-    path('apps/first/clauses/add', ClauseView.clause_add),
-    path('apps/first/clauses/<int:detail_view_id>', ClauseView.clause_view),
-    path('apps/first/clauses/<int:detail_view_id>/change', ClauseView.clause_change),
-
-    path('apps/first/syntaxemes', SyntaxemeView.syntaxeme_list),
-    path('apps/first/syntaxemes/add', SyntaxemeView.syntaxeme_add),
-    path('apps/first/syntaxemes/<int:detail_view_id>', SyntaxemeView.syntaxeme_view),
-    path('apps/first/syntaxemes/<int:detail_view_id>/change', SyntaxemeView.syntaxeme_change),
-
-    path('apps/first/wordforms', WordformView.wordform_list),
-    path('apps/first/wordforms/add', WordformView.wordform_add),
-    path('apps/first/wordforms/<int:detail_view_id>', WordformView.wordform_view),
-    path('apps/first/wordforms/<int:detail_view_id>/change', WordformView.wordform_change),
+    path('clauses', clauses.clause_list),
+    path('clauses/add', clauses.clause_add),
+    path('clauses/<int:detail_view_id>', clauses.clause_view),
+    path('clauses/<int:detail_view_id>/change', clauses.clause_change),
 
 
-    #path('apps/first/sentences/<int:detail_view_id>/change', SentenceView.sentence_change),
-    #path('home/apps/first/<slug:slug>/add', views.add),
-    #path('home/apps/first/<slug:slug>/<int:detail_view_id>', views.detail_view, name = 'detail_view'),
-    
+    path('syntaxemes', syntaxemes.syntaxeme_list),
+    path('syntaxemes/add', syntaxemes.syntaxeme_add),
+    path('syntaxemes/<int:detail_view_id>', syntaxemes.syntaxeme_view),
+    path('syntaxemes/<int:detail_view_id>/change', syntaxemes.syntaxeme_change),
 
-    
-    #path('home/apps/first/<slug:slug>/<int:detail_view_id>/add', views.add),
-    #path('home/apps/first/<slug:slug>/<int:detail_view_id>/change', views.change, name = 'change'),
-       
+    path('wordforms', wordforms.wordform_list),
+    path('wordforms/add', wordforms.wordform_add),
+    path('wordforms/<int:detail_view_id>', wordforms.wordform_view),
+    path('wordforms/<int:detail_view_id>/change', wordforms.wordform_change),
+
 ]

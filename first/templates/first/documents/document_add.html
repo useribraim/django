@@ -1,0 +1,31 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+{% load static %}
+
+<form id="doc_add">
+
+    <div class="form-group">
+        <label for="text">File Name</label>
+        <input autocomplete="off" type="text" id="file_name" class="form-control" 
+        name="file_name" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Author</label>
+        <input autocomplete="off" type="text" id="author" class="form-control"
+        name="author" value="">
+    </div> 
+    
+    <div class="form-group">
+        <label for="text">Language ID</label>
+        <input autocomplete="off" type="text" id="language_id" class="form-control" 
+        name="language_id" value="">
+    </div>
+    <input type="submit" onclick="add()" value="Save" class="btn btn-light">
+</form>
+    
+<script src='{% static "js/doc_manage.js" %}'></script> 
+
+            
+{% endblock content %}

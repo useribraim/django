@@ -1,10 +1,8 @@
 {% extends "first/index.html" %}
 
 {% block content %}
-
-<form method="POST">
-    {% csrf_token %}
-        
+{% load static %}
+<form id="doc_change">
     <div class="form-group">
         <label for="text">File Name</label>
         <input type="text" class="form-control" 
@@ -21,36 +19,9 @@
         <label for="text">Language ID</label>
         <input type="text" class="form-control" 
         name="language_id" value="{{ context.language_id }}">
-    </div> 
-    <input id="edit" type="submit" value="Save" name="action" class="btn btn-light">
-    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+    </div>
+    <input type="submit" value="Edit" onclick="change_save()">
+    <input value="Delete" onclick="change_delete()" class="btn btn-danger">
 </form>
-<!-- 
-<script>
-     $("#").click(
-        function () {
-             // Get value
-            file_name = $("#file_name").val();
-            author = $("#author").val();
-            language_id = $("#language_id").val();
-          
-            send_data = {
-                "file_name":file_name,
-                "author":author,
-                "language_id":language_id,
-                //"csrfmiddlewaretoken":"{{ csrf_token }}",
-            };
-            console.log(send_data)
-            url = "{{url}}";
-            $.ajax(
-                {
-                    url:'/apps/first/documents/add',
-                    type:"post",
-                    
-                }
-            )
- 
-        }
-    )
-</script> -->
+<script src='{% static "js/doc_manage.js" %}'></script> 
 {% endblock content %}

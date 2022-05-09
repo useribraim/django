@@ -31,31 +31,5 @@
     <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
 </form>
 
-<script>
-     $("#").click(
-        function () {
-             // Get value
-            file_name = $("#file_name").val();
-            author = $("#author").val();
-            language_id = $("#language_id").val();
-          
-            send_data = {
-                "file_name":file_name,
-                "author":author,
-                "language_id":language_id,
-                //"csrfmiddlewaretoken":"{{ csrf_token }}",
-            };
-            console.log(send_data)
-            url = "{{url}}";
-            $.ajax(
-                {
-                    url:'/apps/first/documents/add',
-                    type:"post",
-                    
-                }
-            )
- 
-        }
-    )
-</script>
+
 {% endblock content %}
