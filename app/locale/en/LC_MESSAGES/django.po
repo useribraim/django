@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-29 17:38+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\app\settings.py:136
+msgid "English"
+msgstr ""
+
+#: .\app\settings.py:137
+msgid "Russian"
+msgstr ""
+
+#: .\app\urls.py:8
+msgid "admin/"
+msgstr ""
+
+#: .\first\templates\first\documents\documents_list.html:5
+#: .\first\templates\first\index.html:88
+msgid "Документы"
+msgstr "Documents"
+
+#: .\first\templates\first\documents\documents_list.html:36
+msgid "Добавить документ"
+msgstr "Add Document"
+
+#: .\first\templates\first\documents\documents_list.html:37
+msgid "Загрузить"
+msgstr "Upload"
+
+#: .\first\templates\first\index.html:10
+msgid "Проект"
+msgstr ""
+
+#: .\first\templates\first\index.html:25
+msgid "Портал \"Тюркская Морфема\""
+msgstr "Turkic Morpheme Portal"
+
+#: .\first\templates\first\index.html:59
+msgid "Language"
+msgstr ""
+
+#: .\first\templates\first\index.html:83
+msgid "Меню"
+msgstr "Menu"
+
+#: .\first\templates\first\index.html:91
+msgid "Предложения"
+msgstr "Sentences"
+
+#: .\first\templates\first\index.html:94
+msgid "Клаузы"
+msgstr "Clauses"
+
+#: .\first\templates\first\index.html:97
+msgid "Синтаксемы"
+msgstr "Syntaxemes"
+
+#: .\first\templates\first\index.html:100
+msgid "Словоформы"
+msgstr "Wordforms"
+
+#: .\first\templates\first\other\home.html:7 .\first\views\documents.py:21
+msgid "hello"
+msgstr ""
+
+#: .\first\templates\first\other\home.html:9
+msgid "gustav"
+msgstr ""

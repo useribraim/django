@@ -1,0 +1,71 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+  
+
+<form id="formGrammemeSelect">
+<div class="form-group">
+    <label for="Selects" class="sr-only">Граммема</label>
+    <select class="form-control input-lg" id="Select">
+
+            {% for key, value in sentence_list.items %}
+                    <option value="{{value}}">{{key}}</option>
+            {% endfor %}        
+    </select>
+</div>
+</form>
+
+
+    <form method="POST">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr id="text">
+            <th style="width: 30%"><h3>Предложение</h3></th>
+            <td></td>
+        <tr>
+            <th>Text</th>
+            <td>{{context.text}}</td>
+        </tr>
+        <tr>
+            <th>Document ID</th>
+            <td>{{context.ID}}</td>
+        </tr>
+        <tr>
+            <th>Document Position</th>
+            <td>{{context.document_position}}</td>
+        </tr>
+        </tr>
+        
+    </table class="table table-bordered">
+        
+    
+    <input id="edit" type="submit" value="Edit" name="action" class="btn btn-light">
+    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+    
+    </form>
+    
+    <table class="table table-bordered" style="margin-top: 40px;">
+
+        <tr id="text">
+            <th style="width: 30%"><h3>Документ</h3></th>
+            <td></td>
+        <tr>
+            <tr>
+                <th>File name</th>
+                <td>{{doc_data.file_name}}</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>{{doc_data.author}}</td>
+            </tr>
+            <tr>
+                <th>Language ID</th>
+                <td>{{doc_data.language_id}}</td>
+            </tr>
+    </table>
+
+            
+
+
+
+{% endblock content %}

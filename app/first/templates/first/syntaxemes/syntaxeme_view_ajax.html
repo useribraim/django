@@ -1,0 +1,76 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+
+
+
+    
+    
+    
+    <form method="POST">
+    {% csrf_token %}
+    <table class="table table-bordered">
+        <tr id="text">
+            <th style="width: 30%">Название</th>
+            <td></td>
+        <tr>
+            <th>Clause ID</th>
+            <td>{{context.clause_id}}</td>
+        </tr>
+
+        
+    </table>
+    <input id="edit" type="submit" value="Edit" name="action" class="btn btn-light">
+    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+    
+    </form>
+    
+
+
+
+
+    
+
+            
+<script>
+$("#text").change(function () {
+        var username = "OKay";
+        //var username = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+            }
+        });
+        $.ajax({
+        url: '{{url}}',
+        method: 'POST',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.taken) {
+            alert("Username taken");
+          }
+        }
+      });
+    });
+</script>
+
+
+<!-- <script>
+    const Url = 'http://localhost:8000/apps/first/sentences/15';
+    const data ={
+        name: 'Tom',
+        id:23
+    }
+    $('.btn').click(function(){
+        $.post(Url,data, function(data, status){
+            console.log('${data} and status is ${status}')
+        });
+
+    })
+</script>
+<script> -->
+       
+{% endblock content %}

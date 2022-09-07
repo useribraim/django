@@ -1,0 +1,31 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+<h2 style="font-family: Monospace;">Синтаксемы </h2>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Clause_ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in context %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          {% for key, value in item.items %}
+          <!-- {% if "PK" not in key %} -->
+            <th>
+              <a href="syntaxemes/{{ item.PK }}">{{ value }}</a>
+            </th>
+          <!-- {% endif %} -->
+         
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="syntaxemes/add">Add Sentence</a>
+{% endblock content %}

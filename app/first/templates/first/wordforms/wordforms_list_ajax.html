@@ -1,0 +1,40 @@
+{% extends "first/index.html" %}
+
+
+{% block content %}
+
+<h2 style="font-family: Monospace;">Словоформы </h2>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Syntaxeme ID</th>
+        <th>Frame role ID</th>
+        <th>Position in document</th>
+        <th>Position in sentence</th>
+        <th>Clause position</th>
+        <th>Text</th>
+        <th>Root morpheme ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in context %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          {% for key, value in item.items %}
+          {% if "PK" not in key %} -->
+            <th>
+              <a href="wordforms/{{ item.PK }}">{{ value }}</a>
+            </th>
+          {% endif %}
+         
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="wordforms/add">Add Sentence</a>
+
+
+{% endblock content %}

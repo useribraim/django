@@ -1,0 +1,50 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+        
+    
+    <div class="form-group">
+        <label for="text">Clause ID</label>
+        <select id="id" name="document_id">
+        {%for item in choices%}
+        <option>
+            {{item}}
+        </option>
+        {%endfor%}
+        </select>
+    </div>
+    <input id="edit" type="submit" value="Save" name="action" class="btn btn-light">
+    <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+</form>
+
+<script>
+     $("#").click(
+        function () {
+             // Get value
+            file_name = $("#file_name").val();
+            author = $("#author").val();
+            language_id = $("#language_id").val();
+          
+            send_data = {
+                "file_name":file_name,
+                "author":author,
+                "language_id":language_id,
+                //"csrfmiddlewaretoken":"{{ csrf_token }}",
+            };
+            console.log(send_data)
+            url = "{{url}}";
+            $.ajax(
+                {
+                    url:'/apps/first/documents/add',
+                    type:"post",
+                    
+                }
+            )
+ 
+        }
+    )
+</script>
+{% endblock content %}

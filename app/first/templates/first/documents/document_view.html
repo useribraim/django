@@ -1,0 +1,42 @@
+{% extends "first/index.html" %}
+
+
+{% block content %}
+{% csrf_token %}
+
+
+
+    <table class="table table-hover">
+      {% for key, value in context.items %}
+      
+      {% if "Type" in key %}
+      <h2 style="font-family: Monospace;">{{value}} </h2>
+      {% endif %}
+
+      {%endfor%}
+
+
+    <table class="table table-bordered">
+      <tr>
+          <th style="width: 30%">Название</th>
+          <td></td>
+      </tr>
+      {% for key, value in context.items %}
+      <tr>
+        
+        {% if "Type" not in key %}
+          <th>{{ key }}</th>
+          <td>{{ value }}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      
+      </table>
+
+<form method="POST">
+  {% csrf_token %}
+  <input id="edit" type="submit" value="Edit" name="action" class="btn btn-light">
+  <input id="delete" type="submit" value="Delete" name="action" class="btn btn-danger">
+</form>
+
+{% endblock content %}

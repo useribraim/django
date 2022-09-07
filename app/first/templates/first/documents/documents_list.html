@@ -1,0 +1,40 @@
+{% extends "first/index.html" %}
+
+{% block content %}
+{% load i18n %}
+<h2 style="font-family: Monospace;">{% translate 'Документы'%}</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>File Name</th>
+      <th>Author</th>
+      <th>Language ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in context %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        {% for key, value in item.items %}
+        <!-- {% if "PK" not in key %} -->
+          <th>
+            <a href="documents/{{ item.PK }}">{{ value }}</a>
+          </th>
+        <!-- {% endif %} -->
+       
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tr>
+  </tbody>
+</table>
+
+
+
+  <a class="btn btn-primary" href="documents/add">{% translate 'Добавить документ'%}</a>
+  <a class="btn btn-default" href="documents/upload">{% translate 'Загрузить'%}</a>
+
+
+{% endblock content %}
